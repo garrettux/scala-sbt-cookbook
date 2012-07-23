@@ -8,7 +8,8 @@ apt, java
 
 Attributes
 ==========
-scala_sbt[:repo_url] 
+There is only one attribute, scala_sbt[:repo_url], and you shouldn't have to 
+modify it unless the version changes or the package moves.
 
 Usage
 =====
