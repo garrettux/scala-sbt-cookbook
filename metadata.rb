@@ -1,4 +1,3 @@
-maintainer       "Vitrue"
 maintainer_email "garrettux@gmail.com"
 license          "All rights reserved"
 description      "Installs/Configures scala-sbt"
