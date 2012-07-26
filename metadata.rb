@@ -6,4 +6,4 @@ version          "0.0.1"
 %w{redhat centos scientific fedora debian ubuntu}.each do |os|
   supports os
 end
-%w[ java apt ].each { |cb| depends cb }
+%w[ java apt yum].each { |cb| depends cb }
