@@ -7,7 +7,7 @@ apt, java
 
 Attributes
 ==========
-There are only two attributes, scala_sbt[:repo_url][:debian] and scala_sbt[:repo_url][:redhat[, and you shouldn't have to 
+There are only two attributes, scala_sbt[:repo_url][:debian] and scala_sbt[:repo_url][:redhat], and you shouldn't have to 
 modify either unless the version changes or the packages move.
 
 Usage
