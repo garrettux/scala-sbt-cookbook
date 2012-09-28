@@ -1,15 +1,14 @@
 Description
 ===========
-Chef Cookbook for installing sbt.  Right now only supports ubuntu.
-
+Chef Cookbook for installing sbt.  Supports redhat, centos, scientific, fedora, debian and ubuntu.
 Requirements
 ============
 apt, java
 
 Attributes
 ==========
-There is only one attribute, scala_sbt[:repo_url], and you shouldn't have to 
-modify it unless the version changes or the package moves.
+There are only two attributes, scala_sbt[:repo_url][:debian] and scala_sbt[:repo_url][:redhat[, and you shouldn't have to 
+modify either unless the version changes or the packages move.
 
 Usage
 =====

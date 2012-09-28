@@ -3,20 +3,29 @@
 # Recipe:: default
 #
 
-include_recipe "apt"
 include_recipe "java"
+include_recipe "apt" if platform?("debian","ubuntu")
+include_recipe "yum" if platform?("redhat", "centos", "scientific", "fedora", "arch", "suse")
 
-remote_file "#{Chef::Config[:file_cache_path]}/sbt_repo.deb" do
-  source node[:scala_sbt][:repo_url]
-  action :create_if_missing
-  backup false
-end
+if platform?("redhat", "centos", "scientific", "fedora", "arch", "suse")
+  yum_repository "sbt" do
+    name "typesafe"
+    url node[:scala_sbt][:repo_url][:redhat]
+    action :add
+  end
+else
+  remote_file "#{Chef::Config[:file_cache_path]}/sbt_reo.deb" do
+    source node[:scala_sbt][:repo_url][:debian]
+    action :create_if_missing
+    backup false
+  end
 
-package "sbt_repo.deb" do
-  provider Chef::Provider::Package::Dpkg
-  action :install
-  source "#{Chef::Config[:file_cache_path]}/sbt_repo.deb"
-  notifies :run, "execute[apt-get update]", :immediately
+  package target_file do
+    provider Chef::Provider::Package::Dpkg
+    action :install
+    source target_file
+    notifies :run, "execute[apt-get update]", :immediately
+  end
 end
 
 package "sbt"
