@@ -14,7 +14,7 @@ if platform?("redhat", "centos", "scientific", "fedora", "arch", "suse")
     action :add
   end
 else
-  remote_file "#{Chef::Config[:file_cache_path]}/sbt_reo.deb" do
+  remote_file "#{Chef::Config[:file_cache_path]}/sbt_repo.deb" do
     source node[:scala_sbt][:repo_url][:debian]
     action :create_if_missing
     backup false
