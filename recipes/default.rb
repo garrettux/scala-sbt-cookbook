@@ -12,7 +12,7 @@ if platform?("redhat", "centos", "scientific", "fedora", "arch", "suse")
   target_file = "#{Chef::Config[:file_cache_path]}/sbt_remote.rpm"
 
   remote_file target_file do
-	source node[:scala_sbt][:repo_url][:redhat]
+	source "#{node[:scala_sbt][:repo_url]}/#{node[:scala_sbt][:sbt_version]}/#{node[:scala_sbt][:redhat]}"
     action :create
 	backup false
   end
@@ -27,7 +27,7 @@ else
   target_file = "#{Chef::Config[:file_cache_path]}/sbt_remote.deb"
   
   remote_file target_file do
-    source node[:scala_sbt][:repo_url][:debian]
+    source  "#{node[:scala_sbt][:repo_url]}/#{node[:scala_sbt][:sbt_version]}/#{node[:scala_sbt][:debian]}"
     action :create
     backup false
   end
