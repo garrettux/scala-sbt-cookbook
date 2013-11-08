@@ -36,6 +36,7 @@ else
     provider Chef::Provider::Package::Dpkg
     action :install
     source target_file
+    options "--force-all"
     notifies :run, "execute[apt-get update]", :immediately
   end
 end
